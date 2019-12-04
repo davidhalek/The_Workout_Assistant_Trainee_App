@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,8 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import david.halek.theworkoutassistant.R;
-import david.halek.theworkoutassistant.ui.login.LoginViewModel;
-import david.halek.theworkoutassistant.ui.login.LoginViewModelFactory;
+import david.halek.theworkoutassistant.select_routine.SelectRoutineActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +34,22 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //  ////////////////////////////////////////////////////////////////////////////
+        // TODO add permission code, and pass login id to main activity
+        //
+        //
+        //
+
+        int userid = 9;
+        Intent in = new Intent(LoginActivity.this, SelectRoutineActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("userid", userid);
+        in.putExtras(b);
+        startActivity(in);
+
+        //  ////////////////////////////////////////////////////////////////////////////
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
