@@ -30,7 +30,6 @@ public class ConnectionClass {
             ConnURL = "jdbc:jtds:sqlserver://" + ip + ";"
                     + "databaseName=" + db + ";user=" + username + ";password=" + password + ";";
             conn = DriverManager.getConnection(ConnURL);
-            System.out.println("Connection Successful.");
         } catch (SQLException se) {
             Log.e("-->SQLException-->", se.getMessage());
         } catch (ClassNotFoundException e) {

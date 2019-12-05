@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import david.halek.theworkoutassistant.R;
+import david.halek.theworkoutassistant.log_workout.LogExerciseFragment;
 import david.halek.theworkoutassistant.log_workout.LogWorkoutActivity;
 
 import android.app.Activity;
@@ -14,10 +15,10 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
-public class SelectRoutineActivity extends AppCompatActivity {
+public class SelectRoutineActivity extends AppCompatActivity implements LogExerciseFragment.OnFragmentInteractionListener {
 
     int userId = 9; // Flex Wheeler
-    Activity me;
+    SelectRoutineActivity me;
 
     // Recyclerview
     RecyclerView recyclerView;
@@ -30,6 +31,8 @@ public class SelectRoutineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_routine);
+
+        me = this;
 
         // Recyclerview
         if (routineList == null) {
@@ -50,7 +53,8 @@ public class SelectRoutineActivity extends AppCompatActivity {
         Bundle b = new Bundle();
         b.putInt("userId", userId);
         b.putInt("routineId", routineId);
-        Intent intent = new Intent(SelectRoutineActivity.this, LogWorkoutActivity.class);
+        Intent intent = new Intent(me, LogWorkoutActivity.class);
+//        Intent intent = new Intent(SelectRoutineActivity.this, LogWorkoutActivity.class);
         intent.putExtras(b);
         startActivity(intent);
     }
@@ -86,5 +90,9 @@ public class SelectRoutineActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void onFragmentInteraction(int weight, int reps) {
+
     }
 }
